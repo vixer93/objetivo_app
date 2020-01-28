@@ -1,0 +1,29 @@
+.header
+  = link_to "#modoru",class:"header__exit badge badge-pill badge-secondary" do
+    Back to goal
+  .header__goal-name
+    「Become a professional engineer in 10 weeks」
+.main
+  .main__processes
+    .main__processes__process
+      .main__processes__process__edit.badge.badge-pill.badge-warning
+        Edit
+      .main__processes__process__edit.badge.badge-pill.badge-danger
+        Delete
+      .main__processes__process__name
+        Process1 : team development
+      .main__processes__process__dead
+        Remain ● day
+      .main__processes__process__speed
+        .progress
+          .progress-bar.progress-bar-striped.bg-danger{role:"progressbar", style:"Width: 25%", "aria-valuemin":"25" ,"aria-valuemax":"100"}
+        .main__processes__process__speed__view
+          25%
+      .main__processes__process__tasks
+        %button.btn.btn-info{type: "button"}
+          Remain tasks
+          %span.badge.badge-light
+            5
+.footer
+  = link_to "#tsuika",class:"footer__add badge badge-pill badge-success" do
+    Add process
