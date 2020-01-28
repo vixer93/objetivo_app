@@ -1,25 +1,29 @@
 .header
-  .header__exit.badge.badge-pill.badge-info.badge-secondary
-    ゴールに戻る
+  = link_to "#modoru",class:"header__exit badge badge-pill badge-secondary" do
+    Back to goal
   .header__goal-name
-    「10週間でプロのエンジニアになる」
+    「Become a professional engineer in 10 weeks」
 .main
   .main__processes
     .main__processes__process
+      .main__processes__process__edit.badge.badge-pill.badge-warning
+        Edit
+      .main__processes__process__edit.badge.badge-pill.badge-danger
+        Delete
       .main__processes__process__name
-        milestone1:チーム開発
+        Process1 : team development
       .main__processes__process__dead
-        あと●日
+        Remain ● day
       .main__processes__process__speed
         .progress
           .progress-bar.progress-bar-striped.bg-danger{role:"progressbar", style:"Width: 25%", "aria-valuemin":"25" ,"aria-valuemax":"100"}
         .main__processes__process__speed__view
-          進捗度25%
+          25%
       .main__processes__process__tasks
-        %button.btn.btn-success{type: "button"}
-          タスク数
+        %button.btn.btn-info{type: "button"}
+          Remain tasks
           %span.badge.badge-light
             5
 .footer
-  .footer__add.badge.badge-pill.badge-success
-    プロセス追加
+  = link_to "#tsuika",class:"footer__add badge badge-pill badge-success" do
+    Add process

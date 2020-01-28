@@ -8,10 +8,12 @@
 .header{
   &__exit{
     margin: 15px;
+    font-size: 16px;
   }
   &__goal-name{
     text-align: center;
-    font-family: 'Noto Sans JP', sans-serif;
+    background-color: lightblue;
+    margin: 0 30px;
   }
 }
 
@@ -20,9 +22,16 @@
   &__processes{
     &__process{
       margin-bottom: 30px;
+      width:50%;
+      margin: 0 auto;
+      &__edit{
+        margin-bottom:30px;
+        font-size: 16px;
+      }
       &__name{
         margin-bottom: 30px;
         text-align: center;
+        background-color: yellow;
       }
       &__dead{
         text-align: center;
@@ -32,7 +41,6 @@
         margin-bottom: 15px;
         .progress{
           margin:10px 30px;
-          width: 50%;
           margin: 0 auto;
         }
         &__view{
@@ -50,5 +58,6 @@
 .footer{
   &__add{
     margin: 15px;
+    font-size: 16px;
   }
 }
