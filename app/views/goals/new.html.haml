@@ -1,4 +1,4 @@
-.container{style: 'width:60%'}
+.container.position-relative{style: 'width:60%'}
   = form_with model: @goal do |f|
     .form-group
       = f.label :title, "目標"
@@ -6,11 +6,11 @@
     .form-group
       = f.label :detail, "詳細"
       = f.text_area :detail, class: "form-control", rows: "3"
-    .d-flex
-      .form-group{{style: 'width:40%'}}
+    .d-flex.justify-content-end
+      .form-group{{style: 'width:30%'}}
         = f.label :start, "開始日"
         = f.date_select :start, {}, class: "form-control"
-      .form-group{style: 'width:40%'}
+      .form-group{style: 'width:30%; margin-left: 20px'}
         = f.label :end, "終了目標日"
         = f.date_select :end, {}, class: "form-control"
-    = f.submit "作成", class: "btn btn-primary"
+    = f.submit "作成", class: "btn btn-primary position-absolute", style: 'right:20px'
