@@ -1,12 +1,25 @@
 .header
-  .header__goal
+  .header__exit.badge.badge-pill.badge-info.badge-secondary
+    ゴールに戻る
+  .header__goal-name
+    「10週間でプロのエンジニアになる」
 .main
   .main__processes
+    .main__processes__process
+      .main__processes__process__name
+        milestone1:チーム開発
+      .main__processes__process__dead
+        あと●日
+      .main__processes__process__speed
+        .progress
+          .progress-bar.progress-bar-striped.bg-danger{role:"progressbar", style:"Width: 25%", "aria-valuemin":"25" ,"aria-valuemax":"100"}
+        .main__processes__process__speed__view
+          進捗度25%
+      .main__processes__process__tasks
+        %button.btn.btn-success{type: "button"}
+          タスク数
+          %span.badge.badge-light
+            5
 .footer
-  %button.btn.btn-success{type: "button"}
-    Notifications
-    %span.badge.badge-light
-      4
-  %a{href:"#",class:"badge badge-primary"}
-    Primary
-      4
+  .footer__add.badge.badge-pill.badge-success
+    プロセス追加
