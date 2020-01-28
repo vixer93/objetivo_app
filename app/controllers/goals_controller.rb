@@ -20,3 +20,4 @@ class GoalsController < ApplicationController
       params.require(:goal).permit(:title, :detail, :start, :end)
     end
 end
+
