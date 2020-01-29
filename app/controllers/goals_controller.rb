@@ -13,6 +13,7 @@ class GoalsController < ApplicationController
   end
 
   def now
+    @goal = current_user.goals.find_by(status: 0)
   end
 
   private
