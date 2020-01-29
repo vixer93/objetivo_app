@@ -4,10 +4,11 @@
     .h2.col-md-3
       現在の目標：
     .h2.col-md-7
-      = "チーム開発でアプリを作成する"
+      = @goal.title
     .col-md-2
       達成目標日：
-      = "2020/02/07(Fri)"
+      %br/
+      = @goal.end
   %hr/
   .row.justify-content-center
     .h3.col-md-3
@@ -16,7 +17,7 @@
       = "個人で目標達成を管理できる部分まで機能を作る"
     .col-md-2
       達成目標日：
-      = "2020/01/31(Fri)"
+      = "2020-01-31"
   %hr/
   %table.table.table-hover.mx-auto{style: 'width:60%'}
     %thead.thead-dark
