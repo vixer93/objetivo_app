@@ -9,25 +9,24 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .header
-      .d-flex.justify-content-between{style: 'padding: 10px;'}
-        = link_to root_path do
-          %button.btn.btn-outline-primary
-            OBJETIVO
+      .d-flex.justify-content-between
+        = link_to root_path,style:" padding-top: 5px; padding-left: 20px; text-decoration: none; color: white; font-size: 50px; " do
+          OBJETIVO
         - if user_signed_in?
-          .header-right-box
+          .header-right-box{style: 'padding: 10px;' }
             = link_to edit_user_registration_path do
-              %button.btn.btn-outline-primary
+              %button.btn.btn-outline-light
                 設定
-            = link_to destroy_user_session_path, method: :delete do
-              %button.btn.btn-outline-primary
+            = link_to destroy_user_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} do
+              %button.btn.btn-outline-light
                 ログアウト
         - else
-          .header-right-box
+          .header-right-box{style: 'padding: 10px;' }
             = link_to new_user_registration_path do
-              %button.btn.btn-outline-primary
+              %button.btn.btn-outline-light
                 新規登録
             = link_to new_user_session_path do
-              %button.btn.btn-outline-primary
+              %button.btn.btn-outline-light
                 ログイン
 
     = yield
