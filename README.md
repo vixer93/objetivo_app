@@ -27,3 +27,6 @@ Things you may want to cover:
 
 
 atsuya
+
+#ER Diagram
+![objetivo_app ERD](https://user-images.githubusercontent.com/59346949/73339314-d64e6180-42bb-11ea-88a6-45067e0d6498.png)
