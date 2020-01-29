@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_28_080016) do
+ActiveRecord::Schema.define(version: 2020_01_29_032014) do
 
   create_table "goals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 2020_01_28_080016) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_goals_on_user_id"
+  end
+
+  create_table "stages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "goal_id"
+    t.string "title", null: false
+    t.date "start", null: false
+    t.date "end", null: false
+    t.string "detail"
+    t.boolean "status", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_stages_on_goal_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -39,4 +51,5 @@ ActiveRecord::Schema.define(version: 2020_01_28_080016) do
   end
 
   add_foreign_key "goals", "users"
+  add_foreign_key "stages", "goals"
 end
