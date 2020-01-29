@@ -10,7 +10,7 @@
   %body
     .header
       .d-flex.justify-content-between{style: 'padding: 10px;'}
-        = link_to "#" do
+        = link_to root_path do
           %button.btn.btn-outline-primary
             OBJETIVO
         - if user_signed_in?
@@ -18,15 +18,16 @@
             = link_to edit_user_registration_path do
               %button.btn.btn-outline-primary
                 設定
-            = link_to "#" do
+            = link_to destroy_user_session_path, method: :delete do
               %button.btn.btn-outline-primary
                 ログアウト
         - else
-          = link_to "#" do
-            %button.btn.btn-outline-primary
-              新規登録
-          = link_to "#" do
-            %button.btn.btn-outline-primary
-              ログアウト
+          .header-right-box
+            = link_to new_user_registration_path do
+              %button.btn.btn-outline-primary
+                新規登録
+            = link_to new_user_session_path do
+              %button.btn.btn-outline-primary
+                ログイン
 
     = yield
