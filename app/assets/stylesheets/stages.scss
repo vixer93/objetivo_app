@@ -1,3 +1,62 @@
 // Place all the styles related to the stages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+*{
+  color:#333333;
+}
+.header{
+  &__exit{
+    margin: 15px;
+    font-size: 16px;
+  }
+  &__goal-name{
+    text-align: center;
+    background-color: lightblue;
+    margin: 0 30px;
+  }
+}
+
+.main{
+  margin-top: 50px;
+  &__processes{
+    &__process{
+      margin-bottom: 30px;
+      width:50%;
+      margin: 0 auto;
+      &__edit{
+        margin-bottom:30px;
+        font-size: 16px;
+      }
+      &__name{
+        margin-bottom: 30px;
+        text-align: center;
+        background-color: yellow;
+      }
+      &__dead{
+        text-align: center;
+        margin-bottom: 15px;
+      }
+      &__speed{
+        margin-bottom: 15px;
+        .progress{
+          margin:10px 30px;
+          margin: 0 auto;
+        }
+        &__view{
+          text-align: center;
+          margin-top: 15px;
+        }
+      }
+      &__tasks{
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+.footer{
+  &__add{
+    margin: 15px;
+    font-size: 16px;
+  }
+}
