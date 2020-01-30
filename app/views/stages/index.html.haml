@@ -6,10 +6,10 @@
 .main
   .main__stages
     .main__stages__stage
-      .main__stages__stage__edit.badge.badge-pill.badge-warning
+      = link_to "#",class:"main__stages__stage__edit badge badge-pill badge-warning" do
         編集
       .main__stages__stage__edit.badge.badge-pill.badge-danger
-        削除
+        削除(未実装)
       .main__stages__stage__name
         Stage1 : チーム開発
       .main__stages__stage__dead
@@ -23,7 +23,7 @@
           25%
       .main__stages__stage__tasks
         %button.btn.btn-info{type: "button"}
-          Remain to do
+          todoに飛ぶ
           %span.badge.badge-light
             5
 .footer
