@@ -1,0 +1,6 @@
+%ul.list-group
+%li.list-group-item
+  %input{id: "box-#{active_todo.id}", type: "checkbox"}
+  %label{for: "box-#{active_todo.id}"}
+  %p
+    = active_todo.title

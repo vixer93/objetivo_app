@@ -1,46 +1,21 @@
 .todo-index
   .todo-index__stage-info
     .todo-index__stage-info--title
-      %p ベンチプレス100kgあげる！
+      %p
+        = @stage.title
     .todo-index__stage-info--end-date
-      %p 期日 2020/3/2
+      %p
+        期日
+        %br
+        = @stage.end
     .todo-index__stage-info--progress-rate
-      %p 進捗率 50%
+      %p 進捗率 500%
   .todo-index__main
     .todo-index__main--todo-active
-      %ul.list-group
-        %li.list-group-item
-          %input#box-1{type: "checkbox"}
-          %label{for: "box-1"}
-          %p Todo First
-
-        %li.list-group-item
-          %input#box-2{type: "checkbox"}
-          %label{for: "box-2"}
-          %p Todo Second
-
-        %li.list-group-item
-          %input#box-3{type: "checkbox"}
-          %label{for: "box-3"}
-          %p Todo Third
-
-      .todo-index__main--todo-done
-        %buttun.btn.btn-outline-info 完了済みToDoを表示する
-        %ul.list-group
-          %li.list-group-item
-            %input#box-4{type: "checkbox", checked: "checked"}
-            %label{for: "box-4"}
-            %p Todo First
-
-          %li.list-group-item
-            %input#box-5{type: "checkbox", checked: "checked"}
-            %label{for: "box-5"}
-            %p Todo Second
-
-          %li.list-group-item
-            %input#box-6{type: "checkbox", checked: "checked"}
-            %label{for: "box-6"}
-            %p Todo Third
+      = render partial: 'active_todo', collection: @active_todos
+    .todo-index__main--todo-done
+      %buttun.btn.btn-info 完了済みToDoを表示する
+      = render partial: 'done_todo', collection: @done_todos
 
     .todo-index__main--create-form
       %form
