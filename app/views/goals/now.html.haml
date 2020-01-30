@@ -55,3 +55,4 @@
         %tr
           %td □
           %td Todo機能
+    = button_to '諦める', goal_give_up_path(goal_id: @goal.id), method: :patch, class: "btn btn-danger", data: {confirm: "本当に諦めますか？"}
