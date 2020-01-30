@@ -1,4 +1,7 @@
 class StagesController < ApplicationController
+
+
+
   def index
     @stages = Stage.where('goal_id = params[:goal_id]')
   end
@@ -9,11 +12,13 @@ class StagesController < ApplicationController
   end
 
   def create
-    @stage = Stage.create(stage_params)
+    @goal = Goal.find(params[:goal_id])
+    @stage = Stage.new(stage_params)
     if @stage.save
-      redirect_to goal_stage_path,notice: 'ステージを登録しました。'
+      redirect_to "/goals/#{@goal.id}/stages",notice: 'ステージを登録しました。'
     else
-      render :new,notice: 'エラーが発生しました。もう一度入力してください。'
+      flash.now[:notice] = "エラーが発生しました。もう一度入力してください。"
+      render :new
     end
   end
 
@@ -24,10 +29,10 @@ class StagesController < ApplicationController
 
   def update
     @stage = Stage.find(params[:id])
-    if @stage.update new_stage_params
+    if @stage.update(stage_params)
       redirect_to goal_stage_path,notice: 'ステージを登録しました。'
     else
-      render :edit,notice: 'エラーが発生しました。もう一度入力してください。'
+      render :edit, notice: 'エラーが発生しました。もう一度入力してください。'
     end
   end
 
@@ -38,7 +43,7 @@ class StagesController < ApplicationController
 
   private
   def stage_params
-    params.require(:stages).permit(:title, :detail, :start, :end).merge(goal_id: params[:goal_id])
+    params.require(:stage).permit(:title, :detail, :start, :end).merge(goal_id: params[:goal_id])
   end
 
 end
