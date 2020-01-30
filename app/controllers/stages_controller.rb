@@ -11,9 +11,9 @@ class StagesController < ApplicationController
   def create
     @stage = Stage.create(stage_params)
     if @stage.save
-      redirect_to goal_stage_path,notice: 'ユーザーを登録しました。'
+      redirect_to goal_stage_path,notice: 'ステージを登録しました。'
     else
-      render :new
+      render :new,notice: 'エラーが発生しました。もう一度入力してください。'
     end
   end
 
@@ -25,9 +25,9 @@ class StagesController < ApplicationController
   def update
     @stage = Stage.find(params[:id])
     if @stage.update new_stage_params
-      redirect_to goal_stage_path,notice: 'ユーザーを登録しました。'
+      redirect_to goal_stage_path,notice: 'ステージを登録しました。'
     else
-      render :update
+      render :edit,notice: 'エラーが発生しました。もう一度入力してください。'
     end
   end
 
