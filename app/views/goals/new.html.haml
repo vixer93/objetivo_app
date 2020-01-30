@@ -1,4 +1,4 @@
-.container.position-relative{style: 'width:60%'}
+.container.position-relative{style: 'width:60%; margin-top: 40px'}
   = form_with model: @goal do |f|
     .form-group
       = f.label :title, "目標"
@@ -13,4 +13,4 @@
       .form-group{style: 'width:30%; margin-left: 20px'}
         = f.label :end, "終了目標日"
         = f.date_select :end, {}, class: "form-control"
-    = f.submit "作成", class: "btn btn-primary position-absolute", style: 'right:20px'
+    = f.submit "作成", class: "btn btn-dark position-absolute", style: 'right:20px'
