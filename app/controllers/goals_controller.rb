@@ -14,6 +14,16 @@ class GoalsController < ApplicationController
 
   def now
     @goal = current_user.goals.find_by(status: 0)
+    @stage = nil
+    @todos = nil
+
+    if @goal.present?
+      @stage = @goal.stages.where(status: false).first
+    end
+    
+    if @stage.present? && @stage.todos.present?
+      @todos = @stage.todos
+    end
   end
 
   def pend

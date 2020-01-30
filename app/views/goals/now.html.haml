@@ -1,8 +1,8 @@
 .container.text-center
   - if @goal.blank?
-    = link_to new_goal_path do
-      .btn.btn-primary.btn-lg.btn-block
-        新しい目標を作成する
+    = link_to new_goal_path, style: 'text-decoration: none;' do
+      .btn.btn-dark.btn-lg.btn-block{style: 'margin-top:60px'}
+        .goal{style: 'font-size: 32px; color: white'} 新しい目標を設定する
   - else
     %hr/
     .row.justify-content-center
@@ -15,46 +15,51 @@
         %br/
         = @goal.end
     %hr/
-    .row.justify-content-center
-      .h3.col-md-3
-        期間目標：
-      .h3.col-md-7
-        = "個人で目標達成を管理できる部分まで機能を作る"
-      .col-md-2
-        達成目標日：
-        %br/
-        = "2020-01-31"
-    %hr/
-    %table.table.table-hover.mx-auto{style: 'width:60%'}
-      %thead.thead-dark
-        %tr
-          %th{style: 'width:20%'} 完了
-          %th Todo
-      %tbody
-        %tr
-          %td ☑️
-          %td ユーザ機能の追加
-        %tr
-          %td ☑️
-          %td ゴール機能
-        %tr
-          %td □
-          %td プロセス機能
-        %tr
-          %td □
-          %td Todo機能
-        %tr
-          %td □
-          %td ユーザ機能の追加
-        %tr
-          %td □
-          %td ゴール機能
-        %tr
-          %td □
-          %td プロセス機能
-        %tr
-          %td □
-          %td Todo機能
+    - if @stage.blank?
+      = link_to new_goal_stage_path(goal_id: @goal.id), class: "btn btn-secondary", style: 'padding: 20px 200px' do
+        .h3{style: 'color: white'} 目標達成への道筋を立てる
+      %hr/
+    - else
+      .row.justify-content-center
+        .h3.col-md-3
+          期間目標：
+        .h3.col-md-7
+          = "個人で目標達成を管理できる部分まで機能を作る"
+        .col-md-2
+          達成目標日：
+          %br/
+          = "2020-01-31"
+      %hr/
+      %table.table.table-hover.mx-auto{style: 'width:60%'}
+        %thead.thead-dark
+          %tr
+            %th{style: 'width:20%'} 完了
+            %th Todo
+        %tbody
+          %tr
+            %td ☑️
+            %td ユーザ機能の追加
+          %tr
+            %td ☑️
+            %td ゴール機能
+          %tr
+            %td □
+            %td プロセス機能
+          %tr
+            %td □
+            %td Todo機能
+          %tr
+            %td □
+            %td ユーザ機能の追加
+          %tr
+            %td □
+            %td ゴール機能
+          %tr
+            %td □
+            %td プロセス機能
+          %tr
+            %td □
+            %td Todo機能
     .d-flex.justify-content-center
-      = button_to '保留する', goal_pend_path(goal_id: @goal.id), method: :patch, class: "btn btn-secondary", data: {confirm: "目標を保留します"}
+      = button_to '保留する', goal_pend_path(goal_id: @goal.id), method: :patch, class: "btn btn-info", data: {confirm: "目標を保留します"}
       = button_to '諦める', goal_give_up_path(goal_id: @goal.id), method: :patch, class: "btn btn-danger", data: {confirm: "本当に諦めますか？"}, style: 'margin-left: 10px;'
