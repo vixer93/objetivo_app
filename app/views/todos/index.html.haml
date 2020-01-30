@@ -18,9 +18,8 @@
       = render partial: 'done_todo', collection: @done_todos
 
     .todo-index__main--create-form
-      %form
+      = form_with model: [@goal, @stage, @todo] do |form|
         .form-row.align-items-center
           .col-auto
-            %label.sr-only{for: "text5a"} 新規Todo
-            %input.form-control.mb-2#text5a{type: "text", placeholder: "新規Todo"}
-            %button.btn.btn-info 登録
+            = form.text_field :title, class: "form-control mb-2", id: "text5a", placeholder: "新規登録"
+            = form.submit "登録", class: "btn btn-info"
