@@ -6,7 +6,7 @@ class GoalsController < ApplicationController
   def create
     goal = current_user.goals.new(goal_params)
     if goal.save
-      redirect_to root_path
+      redirect_to new_goal_stage_path(goal_id: goal.id)
     else
       render :new
     end
@@ -14,6 +14,16 @@ class GoalsController < ApplicationController
 
   def now
     @goal = current_user.goals.find_by(status: 0)
+    @stage = nil
+    @todos = nil
+
+    if @goal.present?
+      @stage = @goal.stages.where(status: false).first
+    end
+    
+    if @stage.present? && @stage.todos.present?
+      @todos = @stage.todos
+    end
   end
 
   def pend
