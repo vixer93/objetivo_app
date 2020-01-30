@@ -17,11 +17,11 @@ class GoalsController < ApplicationController
   end
 
   def give_up
-    goal = Goal.find(params[:id])
+    goal = Goal.find(params[:goal_id])
     if goal.update(status: 1)
-      redirect_to :now, notice: "#{goal.title}を諦めました"
+      redirect_to root_path, notice: "#{goal.title}を諦めました"
     else
-      redirect_to :now, notice: 'エラー：正しく処理されませんでした'
+      redirect_to root_path, notice: 'エラー：正しく処理されませんでした'
     end
   end
 
