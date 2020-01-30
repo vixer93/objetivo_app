@@ -29,4 +29,4 @@ Things you may want to cover:
 atsuya
 
 #ER Diagram
-![objetivo_app ERD](https://user-images.githubusercontent.com/59346949/73339314-d64e6180-42bb-11ea-88a6-45067e0d6498.png)
+![objetivo_app ERD](https://user-images.githubusercontent.com/59789801/73415611-c1bea780-4355-11ea-9eac-788897b646be.png)
