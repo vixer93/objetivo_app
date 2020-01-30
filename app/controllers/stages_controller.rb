@@ -1,6 +1,6 @@
 class StagesController < ApplicationController
   def index
-    @stage = Stage.all
+    @stages = Stage.where('goal_id = params[:goal_id]')
   end
 
   def new
@@ -10,7 +10,11 @@ class StagesController < ApplicationController
 
   def create
     @stage = Stage.create(stage_params)
-    redirect_to goal_stage_path
+    if @stage.save
+      redirect_to goal_stage_path,notice: 'ユーザーを登録しました。'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -19,10 +23,14 @@ class StagesController < ApplicationController
   end
 
   def update
-    stage = Stage.find(params[:id])
-    stage.update
-    edirect_to goal_stage_path
+    @stage = Stage.find(params[:id])
+    if @stage.update new_stage_params
+      redirect_to goal_stage_path,notice: 'ユーザーを登録しました。'
+    else
+      render :update
+    end
   end
+
   def destory
     stage = Stage.find(params[:id])
     stage.destroy
