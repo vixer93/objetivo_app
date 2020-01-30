@@ -1,16 +1,51 @@
 .todo-index
-  %ul.todo-index__list.list-group
-    %li.todo-index__list--item.list-group-item
-      %input#box-1{type: "checkbox"}
-      %label{for: "box-1"}
-      %p Todo First
+  .todo-index__stage-info
+    .todo-index__stage-info--title
+      %p ベンチプレス100kgあげる！
+    .todo-index__stage-info--end-date
+      %p 期日 2020/3/2
+    .todo-index__stage-info--progress-rate
+      %p 進捗率 50%
+  .todo-index__main
+    .todo-index__main--todo-active
+      %ul.list-group
+        %li.list-group-item
+          %input#box-1{type: "checkbox"}
+          %label{for: "box-1"}
+          %p Todo First
 
-    %li.todo-index__list--item.list-group-item
-      %input#box-2{type: "checkbox"}
-      %label{for: "box-2"}
-      %p Todo Second
+        %li.list-group-item
+          %input#box-2{type: "checkbox"}
+          %label{for: "box-2"}
+          %p Todo Second
 
-    %li.todo-index__list--item.list-group-item
-      %input#box-3{type: "checkbox"}
-      %label{for: "box-3"}
-      %p Todo Third
+        %li.list-group-item
+          %input#box-3{type: "checkbox"}
+          %label{for: "box-3"}
+          %p Todo Third
+
+      .todo-index__main--todo-done
+        %buttun.btn.btn-outline-info 完了済みToDoを表示する
+        %ul.list-group
+          %li.list-group-item
+            %input#box-4{type: "checkbox", checked: "checked"}
+            %label{for: "box-4"}
+            %p Todo First
+
+          %li.list-group-item
+            %input#box-5{type: "checkbox", checked: "checked"}
+            %label{for: "box-5"}
+            %p Todo Second
+
+          %li.list-group-item
+            %input#box-6{type: "checkbox", checked: "checked"}
+            %label{for: "box-6"}
+            %p Todo Third
+
+    .todo-index__main--create-form
+      %form
+        .form-row.align-items-center
+          .col-auto
+            %label.sr-only{for: "text5a"} 新規Todo
+            %input.form-control.mb-2#text5a{type: "text", placeholder: "新規Todo"}
+            %button.btn.btn-info 登録
