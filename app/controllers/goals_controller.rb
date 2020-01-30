@@ -6,7 +6,7 @@ class GoalsController < ApplicationController
   def create
     goal = current_user.goals.new(goal_params)
     if goal.save
-      redirect_to root_path
+      redirect_to new_goal_stage_path(goal_id: goal.id)
     else
       render :new
     end
