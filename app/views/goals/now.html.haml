@@ -55,5 +55,6 @@
         %tr
           %td □
           %td Todo機能
-    = button_to '保留する', goal_pend_path(goal_id: @goal.id), method: :patch, class: "btn btn-secondary", data: {confirm: "本当に諦めますか？"}
-    = button_to '諦める', goal_give_up_path(goal_id: @goal.id), method: :patch, class: "btn btn-danger", data: {confirm: "本当に諦めますか？"}
+    .d-flex.justify-content-center
+      = button_to '保留する', goal_pend_path(goal_id: @goal.id), method: :patch, class: "btn btn-secondary", data: {confirm: "目標を保留します"}
+      = button_to '諦める', goal_give_up_path(goal_id: @goal.id), method: :patch, class: "btn btn-danger", data: {confirm: "本当に諦めますか？"}, style: 'margin-left: 10px;'
