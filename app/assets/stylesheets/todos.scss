@@ -1,22 +1,25 @@
 .todo-index {
   width: 100vw;
   height: 100vh;
+  background-image: asset-url('moon.jpg');
+  background-size: cover;
+  padding-top: 10px;
   &__stage-info {
     width: 80%;
     height: 20%;
     margin: 0 auto;
-    margin-top: 10px;
-    border: 2px solid;
     display: flex;
+    background-color: #424242;
     &--title {
       width: 60%;
       height: 100%;
       display: flex;
       align-items: center;
       padding: 20px;
-      background-color: #ffb74d;
+      border: 1px solid #ffcc80;
       p {
         font-size: 2.5em;
+        color: white;
       }
     }
     &--end-date {
@@ -25,20 +28,26 @@
       display: flex;
       align-items: center;
       padding: 10px 0;
-      background-color: #ffcc80;
+      border: 1px solid #ffcc80;
       p {
-        font-size: 2.5em;
+        width: 100%;
+        text-align: center;
+        font-size: 2em;
+        color: white;
       }
     }
     &--progress-rate {
       width: 20%;
       height: 100%;
-      background-color: #ffe0b2;
       display: flex;
       align-items: center;
       padding: 10px 0;
+      border: 1px solid #ffcc80;
       p {
-        font-size: 2.5em;
+        font-size: 2em;
+        color: white;
+        width: 100%;
+        text-align: center;
       }
     }
   }
