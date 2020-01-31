@@ -4,8 +4,9 @@
       = current_user.name
       =link_to goals_path, class:  "btn btn-secondary btn-lg btn-block mt-2" do
         目標一覧
-      =link_to goal_stages_path(goal_id: @goal.id), class:  "btn btn-secondary btn-lg btn-block mt-2" do
-        ロードマップ
+      - unless @stage.blank?
+        =link_to goal_stages_path(goal_id: @goal.id), class:  "btn btn-secondary btn-lg btn-block mt-2" do
+          ロードマップ
     .col.border-left.mt-3
       - if @goal.blank?
         = link_to new_goal_path, style: 'text-decoration: none;' do
