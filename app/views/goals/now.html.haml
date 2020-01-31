@@ -8,6 +8,9 @@
         - unless @stage.blank?
           =link_to goal_stages_path(goal_id: @goal.id), class:  "btn btn-outline-secondary btn-lg btn-block mt-2", style: 'color: white; border-color: white' do
             ロードマップ
+          =link_to goal_stage_todos_path(goal_id: @goal.id, stage_id: @stage.id),
+            class:  "btn btn-outline-secondary btn-lg btn-block mt-2", style: 'color: white; border-color: white' do
+            Todo
       .col.border-left.mt-3
         - if @goal.blank?
           = link_to new_goal_path, style: 'text-decoration: none;' do
