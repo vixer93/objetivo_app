@@ -5,7 +5,7 @@
       %h5 アカウントの編集
       = render "devise/shared/links"
     .account-page__inner--right.user-form
-      = form_for(resource, as: resource_name, url: edit_user_registration_path(resource_name)) do |f|
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
         = devise_error_messages!
         .field
           .field-label
