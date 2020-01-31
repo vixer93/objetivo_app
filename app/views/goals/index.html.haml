@@ -1,0 +1,30 @@
+.container
+  .h1.text-center.mt-4{style: 'font-size: 32px;'}
+    目標一覧
+  %table.table.table-hover.table-dark
+    %thead
+      %tr
+        %th{scope:"col"}
+          ＃
+        %th{scope:"col"}
+          title
+        %th{scope:"col"}
+          start
+        %th{scope:"col"}
+          end
+        %th{scope:"col"}
+          status
+    %tbody
+      - @goals.each_with_index do |goal, i|
+        %tr
+          %td
+            = i+1
+          %td
+            = goal.title
+          %td
+            = goal.start
+          %td
+            = goal.end
+          %td
+            = goal.status
+        %br/
