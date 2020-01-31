@@ -90,6 +90,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.9.0)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -255,6 +257,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  enum_help
   haml-rails
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
