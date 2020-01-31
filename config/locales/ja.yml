@@ -1,5 +1,12 @@
 ---
 ja:
+  enums:
+    goal:
+      status:
+        active: "実行中"
+        pending: "保留中"
+        done: "完了！"
+        fail: "失敗"
   activerecord:
     errors:
       messages:
