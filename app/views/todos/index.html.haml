@@ -1,16 +1,25 @@
 .todo-index
-  %ul.todo-index__list.list-group
-    %li.todo-index__list--item.list-group-item
-      %input#box-1{type: "checkbox"}
-      %label{for: "box-1"}
-      %p Todo First
+  .todo-index__stage-info
+    .todo-index__stage-info--title
+      %p
+        = @stage.title
+    .todo-index__stage-info--end-date
+      %p
+        期日
+        %br
+        = @stage.end
+    .todo-index__stage-info--progress-rate
+      %p 進捗率 500%
+  .todo-index__main
+    .todo-index__main--todo-active
+      = render partial: 'active_todo', collection: @active_todos
+    .todo-index__main--todo-done
+      %buttun.btn.btn-info 完了済みToDoを表示する
+      = render partial: 'done_todo', collection: @done_todos
 
-    %li.todo-index__list--item.list-group-item
-      %input#box-2{type: "checkbox"}
-      %label{for: "box-2"}
-      %p Todo Second
-
-    %li.todo-index__list--item.list-group-item
-      %input#box-3{type: "checkbox"}
-      %label{for: "box-3"}
-      %p Todo Third
+    .todo-index__main--create-form
+      = form_with model: [@goal, @stage, @todo] do |form|
+        .form-row.align-items-center
+          .col-auto
+            = form.text_field :title, class: "form-control mb-2", id: "text5a", placeholder: "新規登録"
+            = form.submit "登録", class: "btn btn-info"
