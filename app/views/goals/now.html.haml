@@ -30,36 +30,41 @@
           %br/
           = @stage.end
       %hr/
-      %table.table.table-hover.mx-auto{style: 'width:60%'}
-        %thead.thead-dark
-          %tr
-            %th{style: 'width:20%'} 完了
-            %th Todo
-        %tbody
-          %tr
-            %td ☑️
-            %td ユーザ機能の追加
-          %tr
-            %td ☑️
-            %td ゴール機能
-          %tr
-            %td □
-            %td プロセス機能
-          %tr
-            %td □
-            %td Todo機能
-          %tr
-            %td □
-            %td ユーザ機能の追加
-          %tr
-            %td □
-            %td ゴール機能
-          %tr
-            %td □
-            %td プロセス機能
-          %tr
-            %td □
-            %td Todo機能
+      - if @todos.blank?
+        = link_to "#", class: "btn btn-secondary", style: 'padding: 20px 200px' do
+          .h3{style: 'color: white'} Todoリストの作成
+        %hr/
+      - else 
+        %table.table.table-hover.mx-auto{style: 'width:60%'}
+          %thead.thead-dark
+            %tr
+              %th{style: 'width:20%'} 完了
+              %th Todo
+          %tbody
+            %tr
+              %td ☑️
+              %td ユーザ機能の追加
+            %tr
+              %td ☑️
+              %td ゴール機能
+            %tr
+              %td □
+              %td プロセス機能
+            %tr
+              %td □
+              %td Todo機能
+            %tr
+              %td □
+              %td ユーザ機能の追加
+            %tr
+              %td □
+              %td ゴール機能
+            %tr
+              %td □
+              %td プロセス機能
+            %tr
+              %td □
+              %td Todo機能
     .d-flex.justify-content-center
       = button_to '保留する', goal_pend_path(goal_id: @goal.id), method: :patch, class: "btn btn-info", data: {confirm: "目標を保留します"}
       = button_to '諦める', goal_give_up_path(goal_id: @goal.id), method: :patch, class: "btn btn-danger", data: {confirm: "本当に諦めますか？"}, style: 'margin-left: 10px;'
