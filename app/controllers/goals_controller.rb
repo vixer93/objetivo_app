@@ -1,6 +1,7 @@
 class GoalsController < ApplicationController
 
   def index
+    @goals = Goal.all.where(user_id: current_user.id)
   end
 
   def new
