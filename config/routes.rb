@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     patch 'pend', to: 'goals#pend'
     patch 'give_up', to: 'goals#give_up'
     resources :stages do
-      resources :todos, only: [:index, :create]
+      resources :todos, only: [:index, :create, :destroy]
     end
   end
 end
