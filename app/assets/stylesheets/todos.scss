@@ -64,6 +64,12 @@
         &-item {
           display: flex;
           align-items: center;
+          position: relative;
+          a {
+            text-decoration: none;
+            position: absolute;
+            right: 10px;
+          }
           input[type="checkbox"] {
             display: none;
           }
@@ -133,6 +139,11 @@
         &-item {
           display: flex;
           align-items: center;
+          a {
+            text-decoration: none;
+            position: absolute;
+            right: 10px;
+          }
           input[type="checkbox"] {
             display: none;
           }

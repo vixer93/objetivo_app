@@ -17,6 +17,11 @@ class TodosController < ApplicationController
     end
   end
 
+  def destroy
+    Todo.destroy(params[:id])
+    redirect_to goal_stage_todos_path, notice: "Todoを削除しました"
+  end
+
   private
   def todo_params
     params.require(:todo).permit(:title).merge(stage_id: params[:stage_id])
