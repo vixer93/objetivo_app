@@ -10,7 +10,7 @@
   %body
     .header
       .d-flex.justify-content-between
-        = link_to root_path,style:" padding-top: 5px; padding-left: 20px; text-decoration: none; color: white; font-size: 50px; " do
+        = link_to root_path,style:" padding-left: 20px; text-decoration: none; color: white; font-size: 40px; " do
           OBJETIVO
         - if user_signed_in?
           .header-right-box{style: 'padding: 10px;' }
@@ -28,5 +28,5 @@
             = link_to new_user_session_path do
               %button.btn.btn-outline-light
                 ログイン
-
+    = render 'layouts/notifications'
     = yield
