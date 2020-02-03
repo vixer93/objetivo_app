@@ -17,6 +17,9 @@ class GoalsController < ApplicationController
     end
   end
 
+  def destroy
+  end
+
   def now
     @goal = current_user.goals.find_by(status: 0)
     @stage = nil
