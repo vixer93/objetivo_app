@@ -1,35 +1,41 @@
-.container
-  .h1.text-center.mt-4{style: 'font-size: 32px;'}
-    目標一覧
-  - if @goals.blank?
-    %hr/
-    .text-center
-      目標はまだありません
-  - else
-    %table.table.table-hover.table-dark
-      %thead
-        %tr
-          %th{scope:"col"}
-            ＃
-          %th{scope:"col"}
-            title
-          %th{scope:"col"}
-            start
-          %th{scope:"col"}
-            end
-          %th{scope:"col"}
-            status
-      %tbody
-        - @goals.each_with_index do |goal, i|
+.background{style: "background-image: url(#{image_path "moon.jpg"}); background-size: cover; background-attachment: fixed; width: 100vw; height: calc(100vh - 60px)"}
+  .container
+    .h1.text-center.pt-4{style: 'font-size: 32px; color: white'}
+      目標一覧
+    - if @goals.blank?
+      %hr/
+      .text-center
+        目標はまだありません
+    - else
+      %table.table{style: 'color: white'}
+        %thead
           %tr
-            %td
-              = i+1
-            %td
-              = goal.title
-            %td
-              = goal.start
-            %td
-              = goal.end
-            %td
-              = goal.status_i18n
-          %br/
+            %th{scope:"col"}
+              ＃
+            %th{scope:"col"}
+              title
+            %th{scope:"col"}
+              start
+            %th{scope:"col"}
+              end
+            %th{scope:"col"}
+              status
+            %th{scope:"col"}
+              delete
+        %tbody
+          - @goals.each_with_index do |goal, i|
+            %tr
+              %td
+                = i+1
+              %td
+                = goal.title
+              %td
+                = goal.start
+              %td
+                = goal.end
+              %td
+                = goal.status_i18n
+              %td
+                = link_to '#', class: "btn btn-outline-danger", data: {confirm: "本当に削除しますか？"} do
+                  削除
+            %br/
