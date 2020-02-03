@@ -12,9 +12,9 @@
     .stage__main__stages
       - @stages.each do |stage|
         .stage__main__stages__stage-list
-          = link_to "/goals/#{@goal.id}/stages/#{stage.id}/edit",id:"edit",class:"stage__main__stages__stage-list__edit badge badge-pill badge-warning" do
+          = link_to edit_goal_stage_path(@goal,stage),id:"edit",class:"stage__main__stages__stage-list__edit badge badge-pill badge-warning" do
             編集
-          = link_to "/goals/#{@goal.id}/stages/#{stage.id}",method: :delete,id:"delete", class:"stage__main__stages__stage-list__delete badge badge-pill badge-danger" do
+          = link_to goal_stage_path(@goal,stage),method: :delete,id:"delete", class:"stage__main__stages__stage-list__delete badge badge-pill badge-danger" do
             削除
           .stage__main__stages__stage-list__title
             %h3
@@ -41,7 +41,7 @@
                 = stage.progress_rate
                 %div
                   パーセント
-          = link_to "/goals/#{@goal.id}/stages/#{stage.id}/todos", class:"stage__main__stages__stage-list__tasks" do
+          = link_to goal_stage_todos_path(@goal,stage), class:"stage__main__stages__stage-list__tasks" do
             %button.btn.btn-info{type: "button"}
               todoへ
               %span.badge.badge-light
