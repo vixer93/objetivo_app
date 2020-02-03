@@ -1,65 +1,60 @@
-.container.text-center
-  - if @goal.blank?
-    = link_to new_goal_path, style: 'text-decoration: none;' do
-      .btn.btn-dark.btn-lg.btn-block{style: 'margin-top:60px'}
-        .goal{style: 'font-size: 32px; color: white'} 新しい目標を設定する
-  - else
-    %hr/
-    .row.justify-content-center
-      .h2.col-md-3
-        現在の目標：
-      .h2.col-md-7
-        = @goal.title
-      .col-md-2
-        達成目標日：
-        %br/
-        = @goal.end
-    %hr/
-    - if @stage.blank?
-      = link_to new_goal_stage_path(goal_id: @goal.id), class: "btn btn-secondary", style: 'padding: 20px 200px' do
-        .h3{style: 'color: white'} ロードマップを描く
-      %hr/
-    - else
-      .row.justify-content-center
-        .h3.col-md-3
-          期間目標：
-        .h3.col-md-7
-          = "個人で目標達成を管理できる部分まで機能を作る"
-        .col-md-2
-          達成目標日：
-          %br/
-          = "2020-01-31"
-      %hr/
-      %table.table.table-hover.mx-auto{style: 'width:60%'}
-        %thead.thead-dark
-          %tr
-            %th{style: 'width:20%'} 完了
-            %th Todo
-        %tbody
-          %tr
-            %td ☑️
-            %td ユーザ機能の追加
-          %tr
-            %td ☑️
-            %td ゴール機能
-          %tr
-            %td □
-            %td プロセス機能
-          %tr
-            %td □
-            %td Todo機能
-          %tr
-            %td □
-            %td ユーザ機能の追加
-          %tr
-            %td □
-            %td ゴール機能
-          %tr
-            %td □
-            %td プロセス機能
-          %tr
-            %td □
-            %td Todo機能
-    .d-flex.justify-content-center
-      = button_to '保留する', goal_pend_path(goal_id: @goal.id), method: :patch, class: "btn btn-info", data: {confirm: "目標を保留します"}
-      = button_to '諦める', goal_give_up_path(goal_id: @goal.id), method: :patch, class: "btn btn-danger", data: {confirm: "本当に諦めますか？"}, style: 'margin-left: 10px;'
+.background{style: "background-image: url(#{image_path "moon.jpg"}); background-size: cover; background-attachment: fixed; width: 100vw; height: calc(100vh - 60px)"}
+  .container.text-center{style: 'color: white'}
+    .row
+      .col-2.mt-5
+        = current_user.name
+        =link_to goals_path, class:  "btn btn-outline-secondary btn-lg btn-block mt-2", style: 'color: white; border-color: white' do
+          目標一覧
+        - unless @stage.blank?
+          =link_to goal_stages_path(goal_id: @goal.id), class:  "btn btn-outline-secondary btn-lg btn-block mt-2", style: 'color: white; border-color: white' do
+            ロードマップ
+          =link_to goal_stage_todos_path(goal_id: @goal.id, stage_id: @stage.id),
+            class:  "btn btn-outline-secondary btn-lg btn-block mt-2", style: 'color: white; border-color: white' do
+            Todo
+      .col.border-left.mt-3
+        - if @goal.blank?
+          = link_to new_goal_path, style: 'text-decoration: none;' do
+            .btn.btn-outline-primary.btn-lg.btn-block{style: 'margin-top:60px; border: 1px solid white'}
+              .goal{style: 'font-size: 32px; color: white'} 新しい目標を設定する
+        - else
+          %hr/
+          .row.justify-content-center
+            .h2.col-md-3
+              現在の目標：
+            .h2.col-md-7
+              = @goal.title
+            .col-md-2
+              達成目標日：
+              %br/
+              = @goal.end
+          %hr/
+          - if @stage.blank?
+            = link_to new_goal_stage_path(goal_id: @goal.id), class: "btn btn-outline-primary", style: 'padding: 20px 200px; border: 1px solid white' do
+              .h3{style: 'color: white'} ロードマップを描く
+            %hr/
+          - else
+            .row.justify-content-center
+              .h3.col-md-3
+                期間目標：
+              .h3.col-md-7
+                = @stage.title
+              .col-md-2
+                達成目標日：
+                %br/
+                = @stage.end
+            %hr/
+            - if @todos.blank?
+              = link_to goal_stage_todos_path(goal_id: @goal.id, stage_id: @stage.id),
+                 class: "btn btn-outline-primary", style: 'padding: 20px 200px;  border: 1px solid white' do
+                .h3{style: 'color: white;'} Todoリストの作成
+              %hr/
+            - else 
+              .mb-3
+                ここにTodoリストを表示するよ
+                %br/
+                = @todos
+          .d-flex.justify-content-center
+            = button_to '保留する', goal_pend_path(goal_id: @goal.id), method: :patch, class: "btn btn-outline-info", data: {confirm: "目標を保留します"},
+              style: 'color: white; border-color: white'
+            = button_to '諦める', goal_give_up_path(goal_id: @goal.id), method: :patch, class: "btn btn-outline-danger", data: {confirm: "本当に諦めますか？"}, style: 'margin-left: 10px;',
+              style: 'color: white; border-color: white'
