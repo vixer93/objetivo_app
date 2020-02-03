@@ -42,7 +42,7 @@ class StagesController < ApplicationController
     @goal = Goal.find(params[:goal_id])
     stage = Stage.find(params[:id])
     stage.destroy
-    # redirect_to "/goals/#{@goal.id}/stages",notice: 'ステージを削除しました。'
+    redirect_to "/goals/#{@goal.id}/stages",notice: 'ステージを削除しました。'
   end
 
   private
