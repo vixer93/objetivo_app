@@ -1,31 +1,32 @@
-.header
-  = link_to "##back",class:"header__exit badge badge-pill badge-secondary" do
-    ゴールに戻る
-  .header__goal-name
-    「10週間でプロのエンジニアになる」
-.main
-  .main__stages
-    .main__stages__stage
-      = link_to "#",class:"main__stages__stage__edit badge badge-pill badge-warning" do
-        編集(未実装)
-      .main__stages__stage__edit.badge.badge-pill.badge-danger
-        削除(未実装)
-      .main__stages__stage__name
-        Stage1 : チーム開発
-      .main__stages__stage__dead
-        あと {end} 日
-      .main__stages__stage__detail
-        チーム開発頑張る！！
-      .main__stages__stage__speed
-        .progress
-          .progress-bar.progress-bar-striped.bg-danger{role:"progressbar", style:"Width: 25%", "aria-valuemin":"25" ,"aria-valuemax":"100"}
-        .main__stages__stage__speed__view
-          25%
-      .main__stages__stage__tasks
-        %button.btn.btn-info{type: "button"}
-          todoに飛ぶ
-          %span.badge.badge-light
-            5
-.footer
-  = link_to new_goal_stage_path,class:"footer__add badge badge-pill badge-success" do
-    ステージの追加
+.stage
+  .stage__header
+    = link_to "##back",class:"header__exit badge badge-pill badge-secondary" do
+      ゴールに戻る
+    .stage__eader__goal-name
+      「10週間でプロのエンジニアになる」
+  .stage__main
+    .stage__main__stages
+      .stage__main__stages__stage
+        = link_to "#",class:"main__stages__stage__edit badge badge-pill badge-warning" do
+          編集(未実装)
+        .stage__main__stages__stage__edit.badge.badge-pill.badge-danger
+          削除(未実装)
+        .stage__main__stages__stage__name
+          Stage1 : チーム開発
+        .stage__main__stages__stage__dead
+          あと {end} 日
+        .stage__main__stages__stage__detail
+          チーム開発頑張る！！
+        .stage__main__stages__stage__speed
+          .progress
+            .progress-bar.progress-bar-striped.bg-danger{role:"progressbar", style:"Width: 25%", "aria-valuemin":"25" ,"aria-valuemax":"100"}
+          .stage__main__stages__stage__speed__view
+            25%
+        .stage__main__stages__stage__tasks
+          %button.btn.btn-info{type: "button"}
+            todoに飛ぶ
+            %span.badge.badge-light
+              5
+  .stage__footer
+    = link_to new_goal_stage_path,class:"footer__add badge badge-pill badge-success" do
+      ステージの追加

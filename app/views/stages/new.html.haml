@@ -1,8 +1,9 @@
-.main
-  .main__stages
-    .main__stages__stage
-      = form_with model: [@goal,@stage],local:true do |f|
-        = f.text_field :title
-        = f.date_select :start
-        = f.date_select :end
-        = f.submit "投稿する"
+.stage__main
+  .stage__main
+    .stage__main__stages
+      .stage__main__stages__stage
+        = form_with model: [@goal,@stage],local:true do |f|
+          = f.text_field :title
+          = f.date_select :start
+          = f.date_select :end
+          = f.submit "投稿する"
