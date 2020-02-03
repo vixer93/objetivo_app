@@ -3,7 +3,8 @@ class StagesController < ApplicationController
 
 
   def index
-    @stages = Stage.where('goal_id = params[:goal_id]')
+    @goal = Goal.find(params[:goal_id])
+    @stages = Stage.where(goal_id: params[:goal_id])
   end
 
   def new
@@ -28,17 +29,20 @@ class StagesController < ApplicationController
   end
 
   def update
+    @goal = Goal.find(params[:goal_id])
     @stage = Stage.find(params[:id])
     if @stage.update(stage_params)
-      redirect_to goal_stage_path,notice: 'ステージを登録しました。'
+      redirect_to "/goals/#{@goal.id}/stages",notice: 'ステージを登録しました。'
     else
       render :edit, notice: 'エラーが発生しました。もう一度入力してください。'
     end
   end
 
-  def destory
+  def destroy
+    @goal = Goal.find(params[:goal_id])
     stage = Stage.find(params[:id])
     stage.destroy
+    # redirect_to "/goals/#{@goal.id}/stages",notice: 'ステージを削除しました。'
   end
 
   private

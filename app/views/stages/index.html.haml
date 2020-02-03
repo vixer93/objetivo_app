@@ -1,32 +1,40 @@
 .stage
   .stage__header
-    = link_to "##back",class:"header__exit badge badge-pill badge-secondary" do
+    = link_to goals_path,class:"header__exit badge badge-pill badge-secondary" do
       ゴールに戻る
-    .stage__eader__goal-name
-      「10週間でプロのエンジニアになる」
+    .stage__header__goal-name
+      ゴール名[ 
+      = @goal.title
+      ]
+    .stage__header__add
+      = link_to new_goal_stage_path,class:"header__add badge badge-pill badge-success" do
+        ステージの追加
   .stage__main
     .stage__main__stages
-      .stage__main__stages__stage
-        = link_to "#",class:"main__stages__stage__edit badge badge-pill badge-warning" do
-          編集(未実装)
-        .stage__main__stages__stage__edit.badge.badge-pill.badge-danger
-          削除(未実装)
-        .stage__main__stages__stage__name
-          Stage1 : チーム開発
-        .stage__main__stages__stage__dead
-          あと {end} 日
-        .stage__main__stages__stage__detail
-          チーム開発頑張る！！
-        .stage__main__stages__stage__speed
-          .progress
-            .progress-bar.progress-bar-striped.bg-danger{role:"progressbar", style:"Width: 25%", "aria-valuemin":"25" ,"aria-valuemax":"100"}
-          .stage__main__stages__stage__speed__view
-            25%
-        .stage__main__stages__stage__tasks
-          %button.btn.btn-info{type: "button"}
-            todoに飛ぶ
-            %span.badge.badge-light
-              5
+      - @stages.each do |stage|
+        .stage__main__stages__stage-list
+          = link_to "/goals/#{@goal.id}/stages/#{stage.id}/edit",class:"main__stages__stage-list__edit badge badge-pill badge-warning" do
+            編集
+          = link_to "/goals/#{@goal.id}/stages/#{stage.id}",method: :delete, class:"stage__main__stages__stage-list__delete badge badge-pill badge-danger" do
+            削除
+          .stage__main__stages__stage-list__title
+            %h3
+              ステージ名：
+            = stage.title
+          .stage__main__stages__stage-list__start
+            = stage.start
+          .stage__main__stages__stage-list__end
+            = stage.end
+          .stage__main__stages__stage-list__detail
+            = stage.detail
+          .stage__main__stages__stage-list__speed
+            .progress
+              .progress-bar.progress-bar-striped.bg-danger{role:"progressbar", style:"Width: 25%", "aria-valuemin":"25" ,"aria-valuemax":"100"}
+            .stage__main__stages__stage-list__speed__view
+              %
+          = link_to "/goals/#{@goal.id}/stages/#{stage.id}/todos", class:"stage__main__stages__stage-list__tasks" do
+            %button.btn.btn-info{type: "button"}
+              todoに飛ぶ
+              %span.badge.badge-light
+                5
   .stage__footer
-    = link_to new_goal_stage_path,class:"footer__add badge badge-pill badge-success" do
-      ステージの追加
