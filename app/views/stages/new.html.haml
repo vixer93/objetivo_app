@@ -1,8 +1,10 @@
-.main
-  .main__stages
-    .main__stages__stage
+.stage
+  .stage__new
+    新規ステージの作成
+    .stage__new__info
       = form_with model: [@goal,@stage],local:true do |f|
-        = f.text_field :title
-        = f.date_select :start
-        = f.date_select :end
-        = f.submit "投稿する"
+        = f.text_field :title, class: "stage__new__info__title",placeholder:"新規ステージ名"
+        = f.date_select :start, class: "stage__new__info__start"
+        = f.date_select :end, class: "stage__new__info__end"
+        = f.text_area :detail, class: "stage__new__info__detail",placeholder:"詳細"
+        = f.submit "投稿する", class: "stage__new__info__send"
