@@ -3,9 +3,8 @@
     = link_to goals_path,class:"header__exit badge badge-pill badge-secondary" do
       ゴールに戻る
     .stage__header__goal-name
-      ゴール名[ 
+      ゴール名:
       = @goal.title
-      ]
     .stage__header__add
       = link_to new_goal_stage_path,class:"header__add badge badge-pill badge-success" do
         ステージの追加
@@ -13,18 +12,22 @@
     .stage__main__stages
       - @stages.each do |stage|
         .stage__main__stages__stage-list
-          = link_to "/goals/#{@goal.id}/stages/#{stage.id}/edit",class:"main__stages__stage-list__edit badge badge-pill badge-warning" do
+          = link_to "/goals/#{@goal.id}/stages/#{stage.id}/edit",id:"edit",class:"stage__main__stages__stage-list__edit badge badge-pill badge-warning" do
             編集
-          = link_to "/goals/#{@goal.id}/stages/#{stage.id}",method: :delete, class:"stage__main__stages__stage-list__delete badge badge-pill badge-danger" do
+          = link_to "/goals/#{@goal.id}/stages/#{stage.id}",method: :delete,id:"delete", class:"stage__main__stages__stage-list__delete badge badge-pill badge-danger" do
             削除
           .stage__main__stages__stage-list__title
             %h3
               ステージ名：
             = stage.title
           .stage__main__stages__stage-list__start
-            = stage.start
+            %h4
+              開始日：
+              = stage.start
           .stage__main__stages__stage-list__end
-            = stage.end
+            %h4
+              終了日：
+              = stage.end
           .stage__main__stages__stage-list__detail
             = stage.detail
           .stage__main__stages__stage-list__speed
@@ -32,9 +35,15 @@
               .progress-bar.progress-bar-striped.bg-danger{role:"progressbar", style:"Width: 25%", "aria-valuemin":"25" ,"aria-valuemax":"100"}
             .stage__main__stages__stage-list__speed__view
               進捗率
+              -if stage.progress_rate == nil
+                ー
+              -else
+                = stage.progress_rate
+                %div
+                  パーセント
           = link_to "/goals/#{@goal.id}/stages/#{stage.id}/todos", class:"stage__main__stages__stage-list__tasks" do
             %button.btn.btn-info{type: "button"}
-              todoに飛ぶ
+              todoへ
               %span.badge.badge-light
-                5
+                = stage.todos.count
   .stage__footer
