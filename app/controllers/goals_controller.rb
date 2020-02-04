@@ -19,14 +19,12 @@ class GoalsController < ApplicationController
 
   def destroy
     goal = Goal.find(params[:id])
-    if goal.user_id == current_user.id
-      if goal.destroy
-        redirect_to goals_path, alert: "#{goal.title}を削除しました"
-      else
-        redirect_to goals_path, alert: goals.errors.full_messages
-      end
+    redirect_to goals_path, alert: "不正なリクエストです" if goal.user_id != current_user.id
+    
+    if goal.destroy
+      redirect_to goals_path, alert: "#{goal.title}を削除しました"
     else
-      redirect_to goals_path, alert: "不正なリクエストです"
+      redirect_to goals_path, alert: goals.errors.full_messages
     end
   end
 
