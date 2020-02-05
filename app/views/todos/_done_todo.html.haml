@@ -1,7 +1,6 @@
-%ul.list-group
-  %li.list-group-item
-    %input{id: "box-#{done_todo.id}", type: "checkbox", checked: "checked"}
-    %label{for: "box-#{done_todo.id}"}
-    %p
-      = done_todo.title
-    = link_to "削除", goal_stage_todo_path(@goal,@stage,done_todo), method: "delete"
+%li.list-group-item
+  %input{class: "todo-check-box", id: "box-#{done_todo.id}", type: "checkbox", checked: "checked", data: {todoid: "#{done_todo.id}"}}
+  %label{for: "box-#{done_todo.id}"}
+  %p
+    = done_todo.title
+  = link_to "削除", goal_stage_todo_path(@goal,@stage,done_todo), method: "delete"

@@ -9,13 +9,18 @@
         %br
         = @stage.end
     .todo-index__stage-info--progress-rate
-      %p 進捗率 500%
+      %p
+        進捗率
+        = @stage.progress_rate
+        \%
   .todo-index__main
     .todo-index__main--todo-active
-      = render partial: 'active_todo', collection: @active_todos
+      %ul.list-group
+        = render partial: 'active_todo', collection: @active_todos
     .todo-index__main--todo-done
       %buttun.btn.btn-info 完了済みToDoを表示する
-      = render partial: 'done_todo', collection: @done_todos
+      %ul.list-group
+        = render partial: 'done_todo', collection: @done_todos
 
     .todo-index__main--create-form
       = form_with model: [@goal, @stage, @todo] do |form|

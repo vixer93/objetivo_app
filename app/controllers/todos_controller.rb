@@ -1,4 +1,5 @@
 class TodosController < ApplicationController
+  protect_from_forgery
   def index
     @goal  = Goal.find(params[:goal_id])
     @stage = @goal.stages.find(params[:stage_id])
@@ -17,6 +18,12 @@ class TodosController < ApplicationController
     end
   end
 
+  def update
+    @todo = Todo.find(params[:id])
+    @todo.update(todo_params)
+    render json: @todo
+  end
+
   def destroy
     Todo.destroy(params[:id])
     redirect_to goal_stage_todos_path, notice: "Todoを削除しました"
@@ -24,6 +31,6 @@ class TodosController < ApplicationController
 
   private
   def todo_params
-    params.require(:todo).permit(:title).merge(stage_id: params[:stage_id])
+    params.require(:todo).permit(:title, :status).merge(stage_id: params[:stage_id])
   end
 end
