@@ -4,4 +4,4 @@
     %label{for: "box-#{active_todo.id}"}
     %p
       = active_todo.title
-    = link_to "削除", "/goals/#{active_todo.stage.goal.id}/stages/#{active_todo.stage.id}/todos/#{active_todo.id}", method: "delete"
+    = link_to "削除", goal_stage_todo_path(@goal,@stage,active_todo), method: "delete"
